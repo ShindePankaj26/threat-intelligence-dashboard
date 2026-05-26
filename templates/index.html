@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row mt-4">
+
+                <div class="col-md-6">
+                    <div class="chart-box">
+                        <h4>Threat Distribution</h4>
+                        <canvas id="threatChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="chart-box">
+                        <h4>Attack Trend</h4>
+                        <canvas id="attackChart"></canvas>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="table-section mt-4">
+                <h3>Live Threat Feed</h3>
+
+                <table class="table table-dark table-striped">
+                    <thead>
+                        <tr>
+                            <th>IP Address</th>
+                            <th>Country</th>
+                            <th>Threat Type</th>
+                            <th>Severity</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        {% for threat in threats %}
+                        <tr>
+                            <td>{{ threat.ip }}</td>
+                            <td>{{ threat.country }}</td>
+                            <td>{{ threat.type }}</td>
+                            <td>
+                                <span class="badge bg-danger">
+                                    {{ threat.severity }}
+                                </span>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+</html>
